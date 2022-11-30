@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"net/http"
+
+	"github.com/change-the-game/Http"
+)
 
 func main() {
-	fmt.Println("Let's Change the game")
+
+	http.HandleFunc("/hello", Http.Hello)
+	http.HandleFunc("/headers", Http.Headers)
+
+	http.ListenAndServe(":8090", nil)
 }
